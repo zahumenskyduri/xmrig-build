@@ -1,9 +1,9 @@
 #!/bin/bash
 
-VERS="v2.0"
+VERS="v2.1"
 
 # Required Packages
-PackagesArray=('build-essential' 'cmake' 'libuv1-dev' 'libssl-dev' 'libhwloc-dev' 'screen' 'p7zip-full')
+PackagesArray=('build-essential' 'cmake' 'libuv1-dev' 'libssl-dev' 'libhwloc-dev' 'screen' 'p7zip-full' 'mc' 'nano')
 
 # Setup Variables
 #SCRIPTPATH="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
@@ -31,8 +31,6 @@ usage_example() {
   echo " Usage:  xmrig-build [-dhs] -<0|7|8>"
   echo
   echo "    -0 | 0 | <blank>      - x86-64"
-  echo "    -7 | 7                - ARMv7"
-  echo "    -8 | 8                - ARMv8"
   echo
   echo "    -s | s                - Build Static"
   echo
@@ -57,13 +55,6 @@ flags() {
   ([ "$2" = "-s" ] || [ "$2" = "s" ]) && STATIC=1
   ([ "$3" = "-s" ] || [ "$3" = "s" ]) && STATIC=1
 
-  ([ "$1" = "7" ] || [ "$1" = "-7" ]) && BUILD=7
-  ([ "$2" = "7" ] || [ "$2" = "-7" ]) && BUILD=7
-  ([ "$3" = "7" ] || [ "$3" = "-7" ]) && BUILD=7
-
-  ([ "$1" = "8" ] || [ "$1" = "-8" ]) && BUILD=8
-  ([ "$2" = "8" ] || [ "$2" = "-8" ]) && BUILD=8
-  ([ "$3" = "8" ] || [ "$3" = "-8" ]) && BUILD=8
 }
 
 # Script Update Function
@@ -159,8 +150,6 @@ inoutheader() {
   echo -e "==================================================\e[39m"
   echo -e "\e[33m XMRig Build Script $VERS\e[39m"
 
-  [ $BUILD -eq 7 ] && echo -ne "\e[33m for ARMv7\e[39m" && [ $STATIC -eq 1 ] && echo -e "\e[33m (static)\e[39m"
-  [ $BUILD -eq 8 ] && echo -ne "\e[33m for ARMv8\e[39m" && [ $STATIC -eq 1 ] && echo -e "\e[33m (static)\e[39m"
   [ $BUILD -eq 0 ] && echo -ne "\e[33m for x86-64\e[39m" && [ $STATIC -eq 1 ] && echo -e "\e[33m (static)\e[39m"
 
   echo
