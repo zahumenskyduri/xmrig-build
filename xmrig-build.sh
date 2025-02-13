@@ -3,7 +3,7 @@
 VERS="v2.1"
 
 # Required Packages
-PackagesArray=('build-essential' 'cmake' 'libuv1-dev' 'libssl-dev' 'libhwloc-dev' 'screen' 'p7zip-full' 'mc' 'nano')
+PackagesArray=('build-essential' 'cmake' 'libuv1-dev' 'libssl-dev' 'libhwloc-dev' 'screen' 'p7zip-full' 'mc' 'htop' 'nano')
 
 # Setup Variables
 #SCRIPTPATH="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
